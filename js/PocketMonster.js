@@ -12,30 +12,34 @@ function SeleccionarMascota() {
     let Suprat = document.getElementById('Suprat')
     let Ank = document.getElementById('Ank')
     let Pydos = document.getElementById('Pydos')
+    let MascotaJugador = document.getElementById('MascotaJugador')
 
     if (Turtle.checked) {
 
-        alert('Seleccionaste la mascota Turtle')
+        MascotaJugador.innerHTML = 'Turtle'
 
     }else if (Treevle.checked) {
 
-        alert('Seleccionaste la mascota Treevle')
+        MascotaJugador.innerHTML = 'Treevle'
 
     }else if (Fyre.checked) {
-
-        alert('Seleccionaste la mascota Fyre')
+        
+        MascotaJugador.innerHTML = 'Fyre'
 
     }else if(Suprat.checked) {
+        
+        MascotaJugador.innerHTML = 'Suprat'
 
-        alert('Seleccionaste la mascota Suprat')
     }else if(Ank.checked) {
 
-        alert('Seleccionaste la mascota Ank')
+        MascotaJugador.innerHTML = 'Ank'
+
     }else if(Pydos.checked) {
 
-        alert('Seleccionaste la mascota Pydos')
+        MascotaJugador.innerHTML = 'Pydos'
     }else {
         alert('Debes seleccionar una mascota')
+    
     }
     
 
