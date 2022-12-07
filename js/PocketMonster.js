@@ -1,10 +1,33 @@
+
+let AtaqueJugador = ''
+let enemigo = ''
+let IdAtaqueJugador = 0
+let IdAtaqueEnemigo = 0
+let ResultadoBatalla =''
+let vidas = 3
+
+function aleatorio(min,max) {
+    return Math.floor(Math.random()* (max - min + 1) + min)
+}
+
+
 function IniciarJuego() {
     
     let BotonMascota = document.getElementById('Boton-Mascota')
-    BotonMascota.addEventListener('click', SeleccionarMascota)
+    BotonMascota.addEventListener('click', SeleccionarMascotaJugador)
+
+    let BotonFuego = document.getElementById('BotonFuego')
+    let BotonAgua = document.getElementById('BotonAgua')
+    let BotonHierva = document.getElementById('BotonHierva')
+
+    BotonFuego.addEventListener("click",AtaqueFuego)
+    BotonAgua.addEventListener("click",AtaqueAgua)
+    BotonHierva.addEventListener("click",AtaqueHierva)
+
+    
 }
 
-function SeleccionarMascota() {
+function SeleccionarMascotaJugador() {
 
     let Turtle = document.getElementById('Turtle')
     let Treevle = document.getElementById('Treevle')
@@ -42,9 +65,134 @@ function SeleccionarMascota() {
     
     }
     
-
+    SeleccionarMascotaEnemiga()
 }
 
 
+function SeleccionarMascotaEnemiga() {
+
+
+    let enemigo = aleatorio(1,6)
+
+    let MascotaEnemigo = document.getElementById('MascotaEnemigo')
+
+    if (enemigo==1) {
+
+        MascotaEnemigo.innerHTML = 'Turtle'
+
+    }else if (enemigo==2) {
+
+        MascotaEnemigo.innerHTML = 'Treevle'
+
+    }else if (enemigo==3) {
+        
+        MascotaEnemigo.innerHTML = 'Fyre'
+
+    }else if(enemigo==4) {
+        
+        MascotaEnemigo.innerHTML = 'Suprat'
+
+    }else if(enemigo==5) {
+
+        MascotaEnemigo.innerHTML = 'Ank'
+
+    }else if(enemigo==6) {
+
+        MascotaEnemigo.innerHTML = 'Pydos'    
+    }
+}
+
+function AtaqueFuego() {
+
+    AtaqueJugador = 'Tu macota utilizo Llamarada 🔥'
+
+    IdAtaqueJugador = 1
+
+    AtaqueAleatorioEnemigo()
+
+}
+
+function AtaqueAgua() {
+    
+    AtaqueJugador = 'Tu macota utilizo Lluvia congelada🌧️'
+
+    IdAtaqueJugador = 2
+
+    AtaqueAleatorioEnemigo()
+}
+
+function AtaqueHierva() {
+    
+    AtaqueJugador = 'Tu macota utilizo Hojas Cortantes🍃'
+
+    IdAtaqueJugador = 3
+
+    AtaqueAleatorioEnemigo()
+}
+
+function AtaqueAleatorioEnemigo() {
+    enemigo = aleatorio(1,3)
+
+    if (enemigo == 1) {
+        
+        enemigo = 'El ataque enemigo es de fuego 🔥'
+
+        IdAtaqueEnemigo = 1
+    
+    }if (enemigo == 2) {
+
+        enemigo = 'El ataque enemigo es de agua 💧'
+
+        IdAtaqueEnemigo = 2
+
+    } else {
+
+        enemigo = 'El ataque enemigo es de hierva 🍃'
+
+        IdAtaqueEnemigo = 3
+
+    }
+
+    CrearMensaje()
+}
+
+function CrearMensaje() {
+    
+    let sectionMesajes = document.getElementById('Mensajes')
+    let parrafo = document.createElement('p')
+    while (vidas <= 3) {
+    
+    if (IdAtaqueJugador == 1 && IdAtaqueEnemigo == 1) {
+        ResultadoBatalla = 'Empate🔥'
+    }else if ( IdAtaqueJugador == 2 && IdAtaqueEnemigo == 2) {
+        ResultadoBatalla = 'Empate💧'
+    }else if  (IdAtaqueJugador == 3 && IdAtaqueEnemigo == 3){
+        ResultadoBatalla = 'Empate🍃'
+    }else if (IdAtaqueJugador == 1 && IdAtaqueEnemigo == 2) {
+        ResultadoBatalla = 'Perdiste 👾😣'
+        vidas = vidas-1
+    }else if (IdAtaqueJugador == 2 && IdAtaqueEnemigo == 3){
+        ResultadoBatalla = 'Perdiste 👾😣'
+        vidas = vidas-1
+    }else if (IdAtaqueJugador == 3 && IdAtaqueEnemigo == 1){
+        ResultadoBatalla = 'Perdiste 👾😣'
+        vidas = vidas-1
+    }else if (IdAtaqueJugador == 1 && IdAtaqueEnemigo == 3) {
+        ResultadoBatalla = 'Ganaste 🏆✌🏽'
+    }else if (IdAtaqueJugador == 3 && IdAtaqueEnemigo == 2){
+        ResultadoBatalla = 'Ganaste 🏆✌🏽'
+    }else if (IdAtaqueJugador == 2 && IdAtaqueEnemigo == 1){
+        ResultadoBatalla = 'Ganaste 🏆✌🏽'
+    }
+    parrafo.innerHTML = AtaqueJugador + ' ' + enemigo + ResultadoBatalla
+
+    sectionMesajes.appendChild(parrafo)
+}
+}
+
+function ContadorVidas() {
+    let SectionVidas = document.getElementById('Vidas')
+    
+}
 
 window.addEventListener('load', IniciarJuego)
