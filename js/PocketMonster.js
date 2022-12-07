@@ -4,7 +4,8 @@ let enemigo = ''
 let IdAtaqueJugador = 0
 let IdAtaqueEnemigo = 0
 let ResultadoBatalla =''
-let vidas = 3
+let VidasJugador = 3
+let VidasEnemigo = 3
 
 function aleatorio(min,max) {
     return Math.floor(Math.random()* (max - min + 1) + min)
@@ -152,47 +153,72 @@ function AtaqueAleatorioEnemigo() {
         IdAtaqueEnemigo = 3
 
     }
-
-    CrearMensaje()
+   
+        CrearMensaje()
+    
+    
 }
 
 function CrearMensaje() {
     
     let sectionMesajes = document.getElementById('Mensajes')
     let parrafo = document.createElement('p')
-    while (vidas <= 3) {
+    let SpanVidasJugador = document.getElementById('VidasJugador')
+    let SpanVidasEnemigo = document.getElementById('VidasEnemigo')
+
+    
+        
     
     if (IdAtaqueJugador == 1 && IdAtaqueEnemigo == 1) {
         ResultadoBatalla = 'Empate🔥'
+        VidasJugador
+        VidasEnemigo
     }else if ( IdAtaqueJugador == 2 && IdAtaqueEnemigo == 2) {
         ResultadoBatalla = 'Empate💧'
+        VidasJugador
+        VidasEnemigo
     }else if  (IdAtaqueJugador == 3 && IdAtaqueEnemigo == 3){
         ResultadoBatalla = 'Empate🍃'
+        VidasJugador
+        VidasEnemigo
     }else if (IdAtaqueJugador == 1 && IdAtaqueEnemigo == 2) {
         ResultadoBatalla = 'Perdiste 👾😣'
-        vidas = vidas-1
+        VidasJugador=VidasJugador-1
+        VidasEnemigo
     }else if (IdAtaqueJugador == 2 && IdAtaqueEnemigo == 3){
         ResultadoBatalla = 'Perdiste 👾😣'
-        vidas = vidas-1
+        VidasJugador=VidasJugador-1
+        VidasEnemigo
     }else if (IdAtaqueJugador == 3 && IdAtaqueEnemigo == 1){
         ResultadoBatalla = 'Perdiste 👾😣'
-        vidas = vidas-1
-    }else if (IdAtaqueJugador == 1 && IdAtaqueEnemigo == 3) {
+        VidasJugador=VidasJugador-1
+        VidasEnemigo
+    }else if (IdAtaqueJugador == 1 && IdAtaqueEnemigo == 3){
         ResultadoBatalla = 'Ganaste 🏆✌🏽'
+        VidasJugador
+        VidasEnemigo=VidasEnemigo-1
     }else if (IdAtaqueJugador == 3 && IdAtaqueEnemigo == 2){
         ResultadoBatalla = 'Ganaste 🏆✌🏽'
+        VidasJugador
+        VidasEnemigo=VidasEnemigo-1
     }else if (IdAtaqueJugador == 2 && IdAtaqueEnemigo == 1){
         ResultadoBatalla = 'Ganaste 🏆✌🏽'
+        VidasJugador
+        VidasEnemigo=VidasEnemigo-1
     }
+    
+    
     parrafo.innerHTML = AtaqueJugador + ' ' + enemigo + ResultadoBatalla
 
     sectionMesajes.appendChild(parrafo)
-}
+
+    SpanVidasJugador.innerHTML=VidasJugador
+    SpanVidasEnemigo.innerHTML=VidasEnemigo
+
+
+
 }
 
-function ContadorVidas() {
-    let SectionVidas = document.getElementById('Vidas')
-    
-}
+
 
 window.addEventListener('load', IniciarJuego)
