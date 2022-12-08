@@ -14,6 +14,13 @@ function aleatorio(min,max) {
 
 function IniciarJuego() {
     
+    let sectionSeleccionarAtaque = document.getElementById('Seleccionar-Ataque')
+    sectionSeleccionarAtaque.style.display = 'none'
+
+    let sectionReiniciar = document.getElementById('Reiniciar')
+    sectionReiniciar.style.display = 'none'
+
+
     let BotonMascota = document.getElementById('Boton-Mascota')
     BotonMascota.addEventListener('click', SeleccionarMascotaJugador)
 
@@ -21,14 +28,23 @@ function IniciarJuego() {
     let BotonAgua = document.getElementById('BotonAgua')
     let BotonHierva = document.getElementById('BotonHierva')
 
-    BotonFuego.addEventListener("click",AtaqueFuego)
-    BotonAgua.addEventListener("click",AtaqueAgua)
-    BotonHierva.addEventListener("click",AtaqueHierva)
+    BotonFuego.addEventListener('click',AtaqueFuego)
+    BotonAgua.addEventListener('click',AtaqueAgua)
+    BotonHierva.addEventListener('click',AtaqueHierva)
 
-    
+    let BotonReiniciar = document.getElementById('Boton-Reiniciar')
+    BotonReiniciar.addEventListener('click',ReiniciarJuego)
 }
 
+
 function SeleccionarMascotaJugador() {
+
+    let sectionSeleccionarAtaque = document.getElementById('Seleccionar-Ataque')
+    sectionSeleccionarAtaque.style.display = 'block'
+
+    let sectionSeleccionarmascota = document.getElementById('Seleccionar-mascota')
+    sectionSeleccionarmascota.style.display = 'none'
+
 
     let Turtle = document.getElementById('Turtle')
     let Treevle = document.getElementById('Treevle')
@@ -207,7 +223,6 @@ function CrearMensaje() {
         VidasEnemigo=VidasEnemigo-1
     }
     
-    
     parrafo.innerHTML = AtaqueJugador + ' ' + enemigo + ResultadoBatalla
 
     sectionMesajes.appendChild(parrafo)
@@ -215,10 +230,50 @@ function CrearMensaje() {
     SpanVidasJugador.innerHTML=VidasJugador
     SpanVidasEnemigo.innerHTML=VidasEnemigo
 
-
+//Evalua las vidas
+RevisarVidas()
 
 }
 
+function RevisarVidas() {
 
+    if (VidasEnemigo == 0) {
+
+        MensajeResultadoBatalla('Ganaste el juego! 🏆👾')
+        
+    }else if (VidasJugador == 0) {
+        MensajeResultadoBatalla('Perdiste el juego 😣👾')
+    }
+    
+}
+
+function MensajeResultadoBatalla(ResultadoFinal) {
+    
+    let sectionMesajes = document.getElementById('Mensajes')
+    let parrafo = document.createElement('p')
+
+    parrafo.innerHTML = ResultadoFinal  
+
+    sectionMesajes.appendChild(parrafo)
+
+    let BotonFuego = document.getElementById('BotonFuego')
+    let BotonAgua = document.getElementById('BotonAgua')
+    let BotonHierva = document.getElementById('BotonHierva')
+    let BotonMascota = document.getElementById('Boton-Mascota')
+
+    BotonMascota.disabled = true
+    BotonFuego.disabled = true
+    BotonAgua.disabled = true
+    BotonHierva.disabled = true
+
+let sectionReiniciar = document.getElementById('Reiniciar')
+    sectionReiniciar.style.display = 'block'
+}
+
+function ReiniciarJuego() {
+    
+    location.reload()
+
+}
 
 window.addEventListener('load', IniciarJuego)
