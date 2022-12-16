@@ -59,6 +59,10 @@ input{
     display:none;
 }
 
+input:checked + label{
+    background-color: #477b69;
+}
+
 #Boton-Mascota{
     width: 168;
     height: 100px;
