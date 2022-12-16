@@ -31,7 +31,7 @@ body{
     align-items: center;
 }  
 
-.targetas{
+.targetas, .DivBotonAtaque{
     display: flex;
     gap: 10px;
 }
@@ -46,7 +46,6 @@ body{
     border: 1px solid #9C254D;
     margin: 10px;
     text-align: center;
-    
     display: flex;
     color: white;
     align-content: center;
@@ -100,4 +99,26 @@ input{
     border: transparent;
     background-color: #2ecc71;
     font-family: 'Poppins', sans-serif;
+}
+
+.DivAtaques{
+    display: grid;
+    grid-template-columns: 100px 100px;
+    align-items: center;
+}
+
+.DivAtaquesJugador, .DivAtaquesEnemigo{
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+
+
+@media (max-width: 360px) {
+
+    .targetas, .DivBotonAtaque{
+    flex-direction: column;
+    }
+
+    
 }

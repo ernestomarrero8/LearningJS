@@ -59,25 +59,28 @@
             
             <h2 class="Subtitulo">Selecciona tu ataque:</h2>
 
-            <div>
+            <div class="DivBotonAtaque">
                 <button id="BotonFuego" class="BotonAtaque">Fuego 🔥</button>
                 <button id="BotonAgua" class="BotonAtaque">Agua 💧</button>
                 <button id="BotonHierva" class="BotonAtaque">Hierva 🍃</button>
             </div>
-            
                 <div id="Mensajes">
                     <p id="Resultado">Good luck have Fun</p>
                     <section id="Reiniciar">
                         <button id="Boton-Reiniciar">Reiniciar</button>
                     </section>
                 </div>
-            
-            <div>
-                <div id="AtaqueDelJugador"></div>
-                <div id="AtaqueDelEnemigo"></div>
-                <p> Tu macota <span id="MascotaJugador"></span> tiene <span id="VidasJugador">3</span> vidas</p>
-                <p> La mascota <span id="MascotaEnemigo"></span> del enemigo tiene <span id="VidasEnemigo">3</span> vidas</p>
-        
+            <div class="DivAtaques">
+                <div class="DivAtaquesJugador">
+                    <p id="MascotaJugador"></p>
+                    <p id="VidasJugador">3</p>
+                    <div id="AtaqueDelJugador"></div>     
+                </div>
+                <div class="DivAtaquesEnemigo">
+                    <p id="MascotaEnemigo"></p>
+                    <p id="VidasEnemigo">3</p>
+                    <div id="AtaqueDelEnemigo"></div>   
+                </div>
             </div>
         </section>
         </body>    
