@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+body{
+    font-family: 'Poppins', sans-serif;
+    background-color: #2A3990;
+}
+
+
+.ClaseTitulo {
+    font-family: 'Audiowide', cursive;
+    font-size: 40px;
+    color: white;
+    background-color: #9C254D;
+    background-image: linear-gradient(to left, #FFD700, #7B68EE, #3498db, #2ecc71, #FFD700);
+    background-clip: text;
+    animation: color 0.5s linear infinite;
+    background-size: 100%;   
+    border-radius: 20px;
+}
+
+.Subtitulo{
+    color: white;
+    font-size: 24px;
+}
+
+#Seleccionar-mascota{
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}  
+
+.targetas{
+    display: flex;
+    gap: 10px;
+}
+
+.targetaPoketMonsters{
+    width: 168;
+    height: 100px;
+    background: 97DECE;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 20px;
+    border: 1px solid #9C254D;
+    margin: 10px;
+    text-align: center;
+    
+    display: flex;
+    color: white;
+    align-content: center;
+}
+
+.targetaPoketMonsters img{
+    width: 60px;
+}
+
+input{
+    display:none;
+}
+
+#Boton-Mascota{
+    width: 168;
+    height: 100px;
+    font-family: 'Poppins', sans-serif;
+    border-radius: 20px;
+    background: transparent;
+    border: 3px solid gray;
+    color: white;
+    margin-top: 30px;
+}
+
+#Seleccionar-Ataque{
+    flex-direction: column;
+    align-items: center;
+}
+
+.BotonAtaque{
+    background-color: #9C254D ;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 20px;
+    border: 1px solid white;
+}
+
+#Mensajes{
+    font-family: 'Poppins', sans-serif;
+    width: 280px;
+    background: #2ecc71;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+#Boton-Reiniciar{
+    border: transparent;
+    background-color: #2ecc71;
+    font-family: 'Poppins', sans-serif;
+}

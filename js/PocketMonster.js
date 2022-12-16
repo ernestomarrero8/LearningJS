@@ -24,6 +24,9 @@ function IniciarJuego() {
     let BotonMascota = document.getElementById('Boton-Mascota')
     BotonMascota.addEventListener('click', SeleccionarMascotaJugador)
 
+    let parrafo = document.createElement('p')
+
+
     let BotonFuego = document.getElementById('BotonFuego')
     let BotonAgua = document.getElementById('BotonAgua')
     let BotonHierva = document.getElementById('BotonHierva')
@@ -40,7 +43,7 @@ function IniciarJuego() {
 function SeleccionarMascotaJugador() {
 
     let sectionSeleccionarAtaque = document.getElementById('Seleccionar-Ataque')
-    sectionSeleccionarAtaque.style.display = 'block'
+    sectionSeleccionarAtaque.style.display = 'flex'
 
     let sectionSeleccionarmascota = document.getElementById('Seleccionar-mascota')
     sectionSeleccionarmascota.style.display = 'none'
@@ -52,7 +55,8 @@ function SeleccionarMascotaJugador() {
     let Suprat = document.getElementById('Suprat')
     let Ank = document.getElementById('Ank')
     let Pydos = document.getElementById('Pydos')
-    let MascotaJugador = document.getElementById('MascotaJugador')
+    let MascotaJugador = ""
+    let SpanMascotaJugador = document.getElementById('MascotaJugador')
 
     if (Turtle.checked) {
 
@@ -82,7 +86,10 @@ function SeleccionarMascotaJugador() {
     
     }
     
+    SpanMascotaJugador.innerHTML=MascotaJugador
+
     SeleccionarMascotaEnemiga()
+
 }
 
 
@@ -91,7 +98,8 @@ function SeleccionarMascotaEnemiga() {
 
     let enemigo = aleatorio(1,6)
 
-    let MascotaEnemigo = document.getElementById('MascotaEnemigo')
+    let MascotaEnemigo = ""
+    let SpanMascotaEnemigo =document.getElementById('MascotaEnemigo')
 
     if (enemigo==1) {
 
@@ -117,6 +125,9 @@ function SeleccionarMascotaEnemiga() {
 
         MascotaEnemigo.innerHTML = 'Pydos'    
     }
+
+    SpanMascotaEnemigo.innerHTML = MascotaEnemigo
+
 }
 
 function AtaqueFuego() {
@@ -177,12 +188,26 @@ function AtaqueAleatorioEnemigo() {
 
 function CrearMensaje() {
     
-    let sectionMesajes = document.getElementById('Mensajes')
-    let parrafo = document.createElement('p')
+    let ParrafoResultado = document.getElementById('Resultado')
     let SpanVidasJugador = document.getElementById('VidasJugador')
     let SpanVidasEnemigo = document.getElementById('VidasEnemigo')
+  
+    let DivAtaqueDelJugador = document.getElementById('AtaqueDelJugador')
+    let DivAtaqueDelEnemigo = document.getElementById('AtaqueDelEnemigo')
 
+    SpanVidasJugador.innerHTML=VidasJugador
+    SpanVidasEnemigo.innerHTML=VidasEnemigo
     
+    let NuevoAtaqueDelJugador = document.createElement('p')
+    let NuevoAtaqueDelEnemigo = document.createElement('p')
+
+    ParrafoResultado.innerHTML = ResultadoBatalla
+    NuevoAtaqueDelJugador.innerHTML = AtaqueJugador
+    NuevoAtaqueDelEnemigo.innerHTML = enemigo
+
+
+    DivAtaqueDelJugador.appendChild(NuevoAtaqueDelJugador)
+    DivAtaqueDelEnemigo.appendChild(NuevoAtaqueDelEnemigo)
         
     
     if (IdAtaqueJugador == 1 && IdAtaqueEnemigo == 1) {
@@ -223,12 +248,9 @@ function CrearMensaje() {
         VidasEnemigo=VidasEnemigo-1
     }
     
-    parrafo.innerHTML = AtaqueJugador + ' ' + enemigo + ResultadoBatalla
+    
 
-    sectionMesajes.appendChild(parrafo)
-
-    SpanVidasJugador.innerHTML=VidasJugador
-    SpanVidasEnemigo.innerHTML=VidasEnemigo
+    
 
 //Evalua las vidas
 RevisarVidas()
@@ -249,12 +271,13 @@ function RevisarVidas() {
 
 function MensajeResultadoBatalla(ResultadoFinal) {
     
-    let sectionMesajes = document.getElementById('Mensajes')
+    let ParrafoResultado = document.getElementById('Resultado')
     let parrafo = document.createElement('p')
 
-    parrafo.innerHTML = ResultadoFinal  
+    ParrafoResultado.innerHTML = ResultadoBatalla
+    
 
-    sectionMesajes.appendChild(parrafo)
+    ParrafoResultado.appendChild(parrafo)
 
     let BotonFuego = document.getElementById('BotonFuego')
     let BotonAgua = document.getElementById('BotonAgua')

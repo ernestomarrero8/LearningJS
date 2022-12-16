@@ -1,60 +1,84 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
     <head>
+        <meta charset="utf-8"/>
         <body>
-            <meta charset="utf -8"/>
-            <title>
-                Pocket Monsters
-            </title>
+            <title>Pocket Monsters</title>
             <script src="./js/PocketMonster.js"></script>
-        <h1>POCKET MONSTERS 🔥💧🍃</h1>
-
+            <link rel="stylesheet" href="./css/styles.css">
+    </head>
         <section id="Seleccionar-mascota">
-            <h2>Selecciona tu mascota:</h2>
+            <h1 class="ClaseTitulo">POCKET MONSTERS 🔥💧🍃</h1>
+            <h2 class="Subtitulo">Selecciona tu mascota:</h2>
 
-            <label for="Turtle">Turtle</label>
-            <input type="radio" name="mascota" id="Turtle">
+            <div class="targetas">
 
-            <label for="Treevle">Treevle</label>
+            <label class="targetaPoketMonsters" for="Aqurium">
+                <p>Aqurium</p>
+                <img src="./assest/Aqurium.png" alt="Aqurium">
+            </label>
+            <input type="radio" name="mascota" id="Aqurium">
+
+            <label class="targetaPoketMonsters" for="Treevle">
+                <p>Treevle</p>
+                <img src="./assest/Treevle.png" alt="Treevle">
+            </label>
             <input type="radio" name="mascota" id="Treevle">
 
-            <label for="Fyre">Fyre</label>
+            <label class="targetaPoketMonsters" for="Fyre">
+                <p>Fyre</p>
+                <img src="./assest/Fyre.png" alt="Fyre">
+            </label>
             <input type="radio" name="mascota" id="Fyre">
             
-            <label for="Suprat">Suprat</label>
+            <label class="targetaPoketMonsters" for="Suprat">
+                <p>Suprat</p>
+                <img src="./assest/Suprat.png" alt="Suprat">
+            </label>
             <input type="radio" name="mascota" id="Suprat">
             
-            <la4bel for="Ank">Ank</la4bel>
-            <input type="radio" name="mascota" id="Ank">
+            <label class="targetaPoketMonsters" for="Monank">
+                <p>Monank</p>
+                <img src="./assest/Monank.png" alt="Monank">
+            </label>
+            <input type="radio" name="mascota" id="Monank">
             
-            <label for="Pydos">Pydos</label>
+            <label class="targetaPoketMonsters" for="Pydos">
+                <p>Pydos</p>
+                <img src="./assest/Pydos.png" alt="Pydos">
+            </label>
             <input type="radio" name="mascota" id="Pydos">
             
+        </div>
 
         <button id="Boton-Mascota"> Seleccionar</button>
         </section>
         
         <section id="Seleccionar-Ataque">
-            <h2>Selecciona tu ataque</h2>
+            <h1 class="ClaseTitulo">POCKET MONSTERS 🔥💧🍃</h1>
             
-            <p> Tu macota <span id="MascotaJugador"></span> tiene <span id="VidasJugador">3</span> vidas</p>
-            <p> La mascota <span id="MascotaEnemigo"></span> del enemigo tiene <span id="VidasEnemigo">3</span> vidas</p>
+            <h2 class="Subtitulo">Selecciona tu ataque:</h2>
 
-            <p>
-                <button id="BotonFuego">Fuego 🔥</button>
-                <button id="BotonAgua">Agua 💧</button>
-                <button id="BotonHierva">Hierva 🍃</button>
-            </p>
-        </section>
-
-        <section id="Mensajes">
+            <div>
+                <button id="BotonFuego" class="BotonAtaque">Fuego 🔥</button>
+                <button id="BotonAgua" class="BotonAtaque">Agua 💧</button>
+                <button id="BotonHierva" class="BotonAtaque">Hierva 🍃</button>
+            </div>
             
+                <div id="Mensajes">
+                    <p id="Resultado">Good luck have Fun</p>
+                    <section id="Reiniciar">
+                        <button id="Boton-Reiniciar">Reiniciar</button>
+                    </section>
+                </div>
+            
+            <div>
+                <div id="AtaqueDelJugador"></div>
+                <div id="AtaqueDelEnemigo"></div>
+                <p> Tu macota <span id="MascotaJugador"></span> tiene <span id="VidasJugador">3</span> vidas</p>
+                <p> La mascota <span id="MascotaEnemigo"></span> del enemigo tiene <span id="VidasEnemigo">3</span> vidas</p>
+        
+            </div>
         </section>
-
-        <section id="Reiniciar">
-            <button id="Boton-Reiniciar">Reiniciar</button>
-        </section>
-        </body>
-    </head>
-    
+        </body>    
 </html>
