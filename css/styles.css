@@ -107,7 +107,7 @@ input:checked + label{
 
 .DivAtaques{
     display: grid;
-    grid-template-columns: 100px 100px;
+    grid-template-columns: 120px 120px;
     align-items: center;
 }
 

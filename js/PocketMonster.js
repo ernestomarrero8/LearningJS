@@ -1,4 +1,3 @@
-
 let AtaqueJugador = ''
 let enemigo = ''
 let IdAtaqueJugador = 0
@@ -6,6 +5,87 @@ let IdAtaqueEnemigo = 0
 let ResultadoBatalla =''
 let VidasJugador = 3
 let VidasEnemigo = 3
+let ArrayMonsters =[]
+let OpcionDeMascota=''
+let MascotaJugador = ""
+let InputAqurium = document.getElementById('Aqurium')
+let InputTreevle = document.getElementById('Treevle')
+let InputFyre = document.getElementById('Fyre')
+let InputSuprat = document.getElementById('Suprat')
+let InputMonank = document.getElementById('Monank')
+let InputPydos = document.getElementById('Pydo')
+
+const ContenedorTarjetas = document.getElementById('DivTarjetas')
+const sectionReiniciar = document.getElementById('Reiniciar')
+const BotonMascota = document.getElementById('Boton-Mascota')
+const BotonFuego = document.getElementById('BotonFuego')
+const BotonAgua = document.getElementById('BotonAgua')
+const BotonHierva = document.getElementById('BotonHierva')
+const parrafo = document.createElement('p')
+
+class PoketMonster{
+    constructor(nombre, foto, vida){
+        this.nombre = nombre
+        this.foto = foto
+        this.vida = vida
+        this.ataques =[]
+    }
+}
+
+let Aqurium = new PoketMonster('Aqurium','./assest/Aqurium.png', 3)
+let Treevle = new PoketMonster('Treevle','./assest/Treevle.png', 3)
+let Fyre = new PoketMonster('Fyre','./assest/Fyre.png', 3)
+let Suprat = new PoketMonster('Suprat','./assest/Suprat.png', 3)
+let Monank = new PoketMonster('Monank','./assest/Monank.png', 3)
+let Pydos = new PoketMonster('Pydos','./assest/Pydos.png', 3)
+
+Aqurium.ataques.push(
+    { NombreAtaque: 'Lluvia congelada🌧️',id:'BotonAgua'},
+    { NombreAtaque: 'Ataque de agua 💧',id:'BotonAgua'}
+)
+
+Treevle.ataques.push(
+    { NombreAtaque: 'Hojas Cortantes🍃',id:'BotonHierva'},
+    { NombreAtaque: 'Ataque de hierva 🍃',id:'BotonHierva'},
+    { NombreAtaque: 'Llamarada 🔥',id:'BotonFuego'},
+    { NombreAtaque: 'Ataque de fuego 🔥',id:'BotonFuego'}
+)
+
+Fyre.ataques.push(
+    { NombreAtaque: 'Llamarada 🔥',id:'BotonFuego'},
+    { NombreAtaque: 'Ataque de fuego 🔥',id:'BotonFuego'},
+    { NombreAtaque: 'Ataque de hierva 🍃',id:'BotonHierva'},
+    { NombreAtaque: 'Ataque de agua 💧',id:'BotonAgua'}
+)
+
+Suprat.ataques.push(
+    { NombreAtaque: 'Lluvia congelada🌧️',id:'BotonAgua'},
+    { NombreAtaque: 'Ataque de agua 💧',id:'BotonAgua'},
+    { NombreAtaque: 'Hojas Cortantes🍃',id:'BotonHierva'},
+    { NombreAtaque: 'Ataque de hierva 🍃',id:'BotonHierva'},
+    { NombreAtaque: 'Ataque de fuego 🔥',id:'BotonFuego'}
+)
+
+Monank.ataques.push(
+    { NombreAtaque: 'Lluvia congelada🌧️',id:'BotonAgua'},
+    { NombreAtaque: 'Ataque de agua 💧',id:'BotonAgua'},
+    { NombreAtaque: 'Hojas Cortantes🍃',id:'BotonHierva'},
+    { NombreAtaque: 'Ataque de hierva 🍃',id:'BotonHierva'},
+    { NombreAtaque: 'Llamarada 🔥',id:'BotonFuego'},
+    { NombreAtaque: 'Ataque de fuego 🔥',id:'BotonFuego'}
+)
+
+Pydos.ataques.push(
+    { NombreAtaque: 'Lluvia congelada🌧️',id:'BotonAgua'},
+    { NombreAtaque: 'Ataque de agua 💧',id:'BotonAgua'},
+    { NombreAtaque: 'Llamarada 🔥',id:'BotonFuego'},
+    { NombreAtaque: 'Ataque de fuego 🔥',id:'BotonFuego'},
+    { NombreAtaque: 'Ataque de hierva 🍃',id:'BotonHierva'}
+)
+
+ArrayMonsters.push(Aqurium,Treevle,Fyre,Suprat,Monank,Pydos)
+
+
 
 function aleatorio(min,max) {
     return Math.floor(Math.random()* (max - min + 1) + min)
@@ -13,24 +93,25 @@ function aleatorio(min,max) {
 
 
 function IniciarJuego() {
+
+    ArrayMonsters.forEach((PoketMonster) => {
+        OpcionDeMascota = `
+        <input type="radio" name="mascota" id=${PoketMonster.nombre}>
+                <label class="targetaPoketMonsters" for=${PoketMonster.nombre}>
+                    <p>${PoketMonster.nombre}</p>
+                    <img src=${PoketMonster.foto} alt=${PoketMonster.nombre}>
+                </label>
+                `
+    ContenedorTarjetas.innerHTML += OpcionDeMascota
+    });
+
+    
     
     let sectionSeleccionarAtaque = document.getElementById('Seleccionar-Ataque')
     sectionSeleccionarAtaque.style.display = 'none'
-
-    let sectionReiniciar = document.getElementById('Reiniciar')
     sectionReiniciar.style.display = 'none'
-
-
-    let BotonMascota = document.getElementById('Boton-Mascota')
     BotonMascota.addEventListener('click', SeleccionarMascotaJugador)
-
-    let parrafo = document.createElement('p')
-
-
-    let BotonFuego = document.getElementById('BotonFuego')
-    let BotonAgua = document.getElementById('BotonAgua')
-    let BotonHierva = document.getElementById('BotonHierva')
-
+    
     BotonFuego.addEventListener('click',AtaqueFuego)
     BotonAgua.addEventListener('click',AtaqueAgua)
     BotonHierva.addEventListener('click',AtaqueHierva)
@@ -49,48 +130,42 @@ function SeleccionarMascotaJugador() {
     sectionSeleccionarmascota.style.display = 'none'
 
 
-    let Turtle = document.getElementById('Turtle')
-    let Treevle = document.getElementById('Treevle')
-    let Fyre = document.getElementById('Fyre')
-    let Suprat = document.getElementById('Suprat')
-    let Ank = document.getElementById('Ank')
-    let Pydos = document.getElementById('Pydos')
-    let MascotaJugador = ""
     let SpanMascotaJugador = document.getElementById('MascotaJugador')
 
-    if (Turtle.checked) {
+    if (InputAqurium.checked) {
 
-        MascotaJugador.innerHTML = 'Turtle'
+        SpanMascotaJugador.innerHTML = InputAqurium.id
 
-    }else if (Treevle.checked) {
+    }else if (InputTreevle.checked) {
 
-        MascotaJugador.innerHTML = 'Treevle'
+        SpanMascotaJugador.innerHTML = 'Treevle'
 
-    }else if (Fyre.checked) {
+    }else if (InputFyre.checked) {
         
-        MascotaJugador.innerHTML = 'Fyre'
+        SpanMascotaJugador.innerHTML = 'Fyre'
 
-    }else if(Suprat.checked) {
+    }else if(InputSuprat.checked) {
         
-        MascotaJugador.innerHTML = 'Suprat'
+        SpanMascotaJugador.innerHTML = 'Suprat'
 
-    }else if(Ank.checked) {
+    }else if(InputMonank.checked) {
 
-        MascotaJugador.innerHTML = 'Ank'
+        SpanMascotaJugador.innerHTML = 'Monank'
 
-    }else if(Pydos.checked) {
+    }else if(InputPydos.checked) {
 
-        MascotaJugador.innerHTML = 'Pydos'
-    }else {
+        SpanMascotaJugador.innerHTML = 'Pydos'
+    }/* else if (Aqurium.checked == false || Treevle.checked == False || Fyre.checked == False || Suprat.checked == False || Monank.checked == False || Pydos.checked == False) {
         alert('Debes seleccionar una mascota')
+    } */
     
-    }
     
-    SpanMascotaJugador.innerHTML=MascotaJugador
+    
+    SpanMascotaJugador.innerHTML
 
     SeleccionarMascotaEnemiga()
-
 }
+
 
 
 function SeleccionarMascotaEnemiga() {
@@ -103,7 +178,7 @@ function SeleccionarMascotaEnemiga() {
 
     if (enemigo==1) {
 
-        MascotaEnemigo.innerHTML = 'Turtle'
+        MascotaEnemigo.innerHTML = 'Aqurium'
 
     }else if (enemigo==2) {
 
@@ -119,7 +194,7 @@ function SeleccionarMascotaEnemiga() {
 
     }else if(enemigo==5) {
 
-        MascotaEnemigo.innerHTML = 'Ank'
+        MascotaEnemigo.innerHTML = 'Monank'
 
     }else if(enemigo==6) {
 
@@ -168,7 +243,7 @@ function AtaqueAleatorioEnemigo() {
         IdAtaqueEnemigo = 1
     
     }if (enemigo == 2) {
-
+       
         enemigo = 'El ataque enemigo es de agua 💧'
 
         IdAtaqueEnemigo = 2
@@ -247,14 +322,8 @@ function CrearMensaje() {
         VidasJugador
         VidasEnemigo=VidasEnemigo-1
     }
-    
-    
-
-    
-
 //Evalua las vidas
 RevisarVidas()
-
 }
 
 function RevisarVidas() {
