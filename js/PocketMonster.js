@@ -1,19 +1,19 @@
-let AtaqueJugador = ''
-let enemigo = ''
+let AtaqueJugador
+let enemigo
 let IdAtaqueJugador = 0
 let IdAtaqueEnemigo = 0
-let ResultadoBatalla =''
+let ResultadoBatalla
 let VidasJugador = 3
 let VidasEnemigo = 3
 let ArrayMonsters =[]
-let OpcionDeMascota=''
-let MascotaJugador = ""
-let InputAqurium = document.getElementById('Aqurium')
-let InputTreevle = document.getElementById('Treevle')
-let InputFyre = document.getElementById('Fyre')
-let InputSuprat = document.getElementById('Suprat')
-let InputMonank = document.getElementById('Monank')
-let InputPydos = document.getElementById('Pydo')
+let OpcionDeMascota
+let MascotaJugador
+let InputAqurium
+let InputTreevle
+let InputFyre
+let InputSuprat
+let InputMonank
+let InputPydos
 
 const ContenedorTarjetas = document.getElementById('DivTarjetas')
 const sectionReiniciar = document.getElementById('Reiniciar')
@@ -96,7 +96,7 @@ function IniciarJuego() {
 
     ArrayMonsters.forEach((PoketMonster) => {
         OpcionDeMascota = `
-        <input type="radio" name="mascota" id=${PoketMonster.nombre}>
+        <input type="radio" name="mascota" id=${PoketMonster.nombre} />
                 <label class="targetaPoketMonsters" for=${PoketMonster.nombre}>
                     <p>${PoketMonster.nombre}</p>
                     <img src=${PoketMonster.foto} alt=${PoketMonster.nombre}>
@@ -105,7 +105,12 @@ function IniciarJuego() {
     ContenedorTarjetas.innerHTML += OpcionDeMascota
     });
 
-    
+    InputAqurium = document.getElementById('Aqurium')
+    InputTreevle = document.getElementById('Treevle')
+    InputFyre = document.getElementById('Fyre')
+    InputSuprat = document.getElementById('Suprat')
+    InputMonank = document.getElementById('Monank')
+    InputPydos = document.getElementById('Pydos')
     
     let sectionSeleccionarAtaque = document.getElementById('Seleccionar-Ataque')
     sectionSeleccionarAtaque.style.display = 'none'
@@ -138,30 +143,28 @@ function SeleccionarMascotaJugador() {
 
     }else if (InputTreevle.checked) {
 
-        SpanMascotaJugador.innerHTML = 'Treevle'
+        SpanMascotaJugador.innerHTML = InputAqurium.id
 
     }else if (InputFyre.checked) {
         
-        SpanMascotaJugador.innerHTML = 'Fyre'
+        SpanMascotaJugador.innerHTML = SpanMascotaJugador.id
 
     }else if(InputSuprat.checked) {
         
-        SpanMascotaJugador.innerHTML = 'Suprat'
+        SpanMascotaJugador.innerHTML = InputSuprat.id
 
     }else if(InputMonank.checked) {
 
-        SpanMascotaJugador.innerHTML = 'Monank'
+        SpanMascotaJugador.innerHTML = SpanMascotaJugador
 
     }else if(InputPydos.checked) {
 
-        SpanMascotaJugador.innerHTML = 'Pydos'
-    }/* else if (Aqurium.checked == false || Treevle.checked == False || Fyre.checked == False || Suprat.checked == False || Monank.checked == False || Pydos.checked == False) {
-        alert('Debes seleccionar una mascota')
-    } */
-    
-    
-    
-    SpanMascotaJugador.innerHTML
+        SpanMascotaJugador.innerHTML = InputPydos.id
+
+    }else {
+        alert('Selecciona una mascota')
+    }
+
 
     SeleccionarMascotaEnemiga()
 }
