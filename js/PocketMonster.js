@@ -1,7 +1,7 @@
 let AtaqueJugador
 let enemigo
-let IdAtaqueJugador = 0
-let IdAtaqueEnemigo = 0
+let IdAtaqueJugador
+let IdAtaqueEnemigo
 let ResultadoBatalla
 let VidasJugador = 3
 let VidasEnemigo = 3
@@ -14,14 +14,27 @@ let InputFyre
 let InputSuprat
 let InputMonank
 let InputPydos
+let enemigoAleatorio
+let Attack
+let MonsterAttack
+/* let BotonFuego = document.getElementById('BotonFuego')
+let BotonAgua = document.getElementById('BotonAgua')
+let BotonHierva = document.getElementById('BotonHierva') */
 
+let BotonFuego 
+let BotonAgua 
+let BotonHierva
+
+const ContenedorAtaques = document.getElementById('ContenedorAtaques')
+const BotonMascota = document.getElementById('Boton-Mascota')
+const SpanMascotaEnemigo =document.getElementById('MascotaEnemigo')
 const ContenedorTarjetas = document.getElementById('DivTarjetas')
 const sectionReiniciar = document.getElementById('Reiniciar')
-const BotonMascota = document.getElementById('Boton-Mascota')
-const BotonFuego = document.getElementById('BotonFuego')
-const BotonAgua = document.getElementById('BotonAgua')
-const BotonHierva = document.getElementById('BotonHierva')
 const parrafo = document.createElement('p')
+const BotonReiniciar = document.getElementById('Boton-Reiniciar')
+/* const BotonFuego = document.getElementById('BotonFuego')
+const BotonAgua = document.getElementById('BotonAgua')
+const BotonHierva = document.getElementById('BotonHierva') */
 
 class PoketMonster{
     constructor(nombre, foto, vida){
@@ -39,59 +52,38 @@ let Suprat = new PoketMonster('Suprat','./assest/Suprat.png', 3)
 let Monank = new PoketMonster('Monank','./assest/Monank.png', 3)
 let Pydos = new PoketMonster('Pydos','./assest/Pydos.png', 3)
 
-Aqurium.ataques.push(
-    { NombreAtaque: 'Lluvia congelada🌧️',id:'BotonAgua'},
-    { NombreAtaque: 'Ataque de agua 💧',id:'BotonAgua'}
-)
-
-Treevle.ataques.push(
-    { NombreAtaque: 'Hojas Cortantes🍃',id:'BotonHierva'},
-    { NombreAtaque: 'Ataque de hierva 🍃',id:'BotonHierva'},
-    { NombreAtaque: 'Llamarada 🔥',id:'BotonFuego'},
-    { NombreAtaque: 'Ataque de fuego 🔥',id:'BotonFuego'}
-)
-
-Fyre.ataques.push(
-    { NombreAtaque: 'Llamarada 🔥',id:'BotonFuego'},
-    { NombreAtaque: 'Ataque de fuego 🔥',id:'BotonFuego'},
-    { NombreAtaque: 'Ataque de hierva 🍃',id:'BotonHierva'},
-    { NombreAtaque: 'Ataque de agua 💧',id:'BotonAgua'}
-)
-
-Suprat.ataques.push(
-    { NombreAtaque: 'Lluvia congelada🌧️',id:'BotonAgua'},
-    { NombreAtaque: 'Ataque de agua 💧',id:'BotonAgua'},
-    { NombreAtaque: 'Hojas Cortantes🍃',id:'BotonHierva'},
-    { NombreAtaque: 'Ataque de hierva 🍃',id:'BotonHierva'},
-    { NombreAtaque: 'Ataque de fuego 🔥',id:'BotonFuego'}
-)
-
-Monank.ataques.push(
-    { NombreAtaque: 'Lluvia congelada🌧️',id:'BotonAgua'},
-    { NombreAtaque: 'Ataque de agua 💧',id:'BotonAgua'},
-    { NombreAtaque: 'Hojas Cortantes🍃',id:'BotonHierva'},
-    { NombreAtaque: 'Ataque de hierva 🍃',id:'BotonHierva'},
-    { NombreAtaque: 'Llamarada 🔥',id:'BotonFuego'},
-    { NombreAtaque: 'Ataque de fuego 🔥',id:'BotonFuego'}
-)
-
-Pydos.ataques.push(
-    { NombreAtaque: 'Lluvia congelada🌧️',id:'BotonAgua'},
-    { NombreAtaque: 'Ataque de agua 💧',id:'BotonAgua'},
-    { NombreAtaque: 'Llamarada 🔥',id:'BotonFuego'},
-    { NombreAtaque: 'Ataque de fuego 🔥',id:'BotonFuego'},
-    { NombreAtaque: 'Ataque de hierva 🍃',id:'BotonHierva'}
-)
-
 ArrayMonsters.push(Aqurium,Treevle,Fyre,Suprat,Monank,Pydos)
 
-
-
+    Aqurium.ataques.push(
+        { NombreAtaque: 'Lluvia congelada🌧️',id:'Boton-Agua'},
+        { NombreAtaque: 'Hojas Cortantes🍃',id:'Boton-Hierva'}
+    )
+    Treevle.ataques.push(
+        { NombreAtaque: 'Hojas Cortantes🍃',id:'Boton-Hierva'},
+        { NombreAtaque: 'Llamarada 🔥',id:'Boton-Fuego'},
+    )
+    Fyre.ataques.push(
+        { NombreAtaque: 'Llamarada 🔥',id:'Boton-Fuego'},
+        { NombreAtaque: 'Lluvia congelada🌧️',id:'Boton-Agua'}
+    )
+    Suprat.ataques.push(
+        { NombreAtaque: 'Lluvia congelada🌧️',id:'Boton-Agua'},
+        { NombreAtaque: 'Hojas Cortantes🍃',id:'Boton-Hierva'},
+        { NombreAtaque: 'Llamarada 🔥',id:'Boton-Fuego'}
+        
+    )
+    Monank.ataques.push(
+        { NombreAtaque: 'Lluvia congelada🌧️',id:'Boton-Agua'},
+        { NombreAtaque: 'Hojas Cortantes🍃',id:'Boton-Hierva'},
+        { NombreAtaque: 'Llamarada 🔥',id:'Boton-Fuego'}
+    )
+    Pydos.ataques.push(
+        { NombreAtaque: 'Lluvia congelada🌧️',id:'Boton-Agua'},
+        { NombreAtaque: 'Llamarada 🔥',id:'Boton-Fuego'}
+    )
 function aleatorio(min,max) {
     return Math.floor(Math.random()* (max - min + 1) + min)
 }
-
-
 function IniciarJuego() {
 
     ArrayMonsters.forEach((PoketMonster) => {
@@ -117,15 +109,10 @@ function IniciarJuego() {
     sectionReiniciar.style.display = 'none'
     BotonMascota.addEventListener('click', SeleccionarMascotaJugador)
     
-    BotonFuego.addEventListener('click',AtaqueFuego)
-    BotonAgua.addEventListener('click',AtaqueAgua)
-    BotonHierva.addEventListener('click',AtaqueHierva)
-
-    let BotonReiniciar = document.getElementById('Boton-Reiniciar')
+    
     BotonReiniciar.addEventListener('click',ReiniciarJuego)
+    
 }
-
-
 function SeleccionarMascotaJugador() {
 
     let sectionSeleccionarAtaque = document.getElementById('Seleccionar-Ataque')
@@ -134,80 +121,66 @@ function SeleccionarMascotaJugador() {
     let sectionSeleccionarmascota = document.getElementById('Seleccionar-mascota')
     sectionSeleccionarmascota.style.display = 'none'
 
-
     let SpanMascotaJugador = document.getElementById('MascotaJugador')
 
     if (InputAqurium.checked) {
-
         SpanMascotaJugador.innerHTML = InputAqurium.id
-
+        MascotaJugador = InputAqurium.id
     }else if (InputTreevle.checked) {
-
-        SpanMascotaJugador.innerHTML = InputAqurium.id
-
+        SpanMascotaJugador.innerHTML = InputTreevle.id
+        MascotaJugador = InputTreevle.id
     }else if (InputFyre.checked) {
-        
-        SpanMascotaJugador.innerHTML = SpanMascotaJugador.id
-
+        SpanMascotaJugador.innerHTML = InputFyre.id
+        MascotaJugador = InputFyre.id
     }else if(InputSuprat.checked) {
-        
         SpanMascotaJugador.innerHTML = InputSuprat.id
-
+        MascotaJugador = InputSuprat.id
     }else if(InputMonank.checked) {
-
-        SpanMascotaJugador.innerHTML = SpanMascotaJugador
-
+        SpanMascotaJugador.innerHTML = InputMonank.id
+        MascotaJugador = InputMonank.id
     }else if(InputPydos.checked) {
-
         SpanMascotaJugador.innerHTML = InputPydos.id
-
+        MascotaJugador = InputPydos.id
     }else {
         alert('Selecciona una mascota')
+        location.reload()
     }
-
-
     SeleccionarMascotaEnemiga()
+    ExtraerAtaques(MascotaJugador)
+    
+    MostrarAtaques(Attack)
 }
-
-
-
-function SeleccionarMascotaEnemiga() {
-
-
-    let enemigo = aleatorio(1,6)
-
-    let MascotaEnemigo = ""
-    let SpanMascotaEnemigo =document.getElementById('MascotaEnemigo')
-
-    if (enemigo==1) {
-
-        MascotaEnemigo.innerHTML = 'Aqurium'
-
-    }else if (enemigo==2) {
-
-        MascotaEnemigo.innerHTML = 'Treevle'
-
-    }else if (enemigo==3) {
-        
-        MascotaEnemigo.innerHTML = 'Fyre'
-
-    }else if(enemigo==4) {
-        
-        MascotaEnemigo.innerHTML = 'Suprat'
-
-    }else if(enemigo==5) {
-
-        MascotaEnemigo.innerHTML = 'Monank'
-
-    }else if(enemigo==6) {
-
-        MascotaEnemigo.innerHTML = 'Pydos'    
+function ExtraerAtaques(MascotaJugador) {
+    for (let i = 0; i < ArrayMonsters.length; i++) {
+        if (MascotaJugador == ArrayMonsters[i].nombre) {
+        Attack = ArrayMonsters[i].ataques
+        }
     }
-
-    SpanMascotaEnemigo.innerHTML = MascotaEnemigo
-
+    
 }
+function MostrarAtaques(Attack){
+    Attack.forEach((Ataque) => {
+        MonsterAttack = `                       
+        <button id=${Ataque.id} class="BotonAtaque">${Ataque.NombreAtaque}</button>
+        `
+        ContenedorAtaques.innerHTML += MonsterAttack
+    })
+    BotonFuego = document.getElementById('Boton-Fuego')
+    BotonAgua = document.getElementById('Boton-Agua')
+    BotonHierva = document.getElementById('Boton-Hierva')
 
+    BotonFuego.addEventListener('click',AtaqueFuego)
+    BotonAgua.addEventListener('click',AtaqueAgua)
+    BotonHierva.addEventListener('click',AtaqueHierva)
+
+    /* BotonFuego = document.getElementById('BotonFuego')
+    BotonAgua = document.getElementById('BotonAgua')
+    BotonHierva = document.getElementById('BotonHierva') */
+}
+function SeleccionarMascotaEnemiga() {  
+    enemigoAleatorio = aleatorio(0,ArrayMonsters.length -1)
+    SpanMascotaEnemigo.innerHTML = ArrayMonsters[enemigoAleatorio].nombre
+}
 function AtaqueFuego() {
 
     AtaqueJugador = 'Tu macota utilizo Llamarada 🔥'
@@ -217,7 +190,6 @@ function AtaqueFuego() {
     AtaqueAleatorioEnemigo()
 
 }
-
 function AtaqueAgua() {
     
     AtaqueJugador = 'Tu macota utilizo Lluvia congelada🌧️'
@@ -226,7 +198,6 @@ function AtaqueAgua() {
 
     AtaqueAleatorioEnemigo()
 }
-
 function AtaqueHierva() {
     
     AtaqueJugador = 'Tu macota utilizo Hojas Cortantes🍃'
@@ -235,7 +206,6 @@ function AtaqueHierva() {
 
     AtaqueAleatorioEnemigo()
 }
-
 function AtaqueAleatorioEnemigo() {
     enemigo = aleatorio(1,3)
 
@@ -263,7 +233,6 @@ function AtaqueAleatorioEnemigo() {
     
     
 }
-
 function CrearMensaje() {
     
     let ParrafoResultado = document.getElementById('Resultado')
@@ -328,7 +297,6 @@ function CrearMensaje() {
 //Evalua las vidas
 RevisarVidas()
 }
-
 function RevisarVidas() {
 
     if (VidasEnemigo == 0) {
@@ -340,7 +308,6 @@ function RevisarVidas() {
     }
     
 }
-
 function MensajeResultadoBatalla(ResultadoFinal) {
     
     let ParrafoResultado = document.getElementById('Resultado')
@@ -351,10 +318,7 @@ function MensajeResultadoBatalla(ResultadoFinal) {
 
     ParrafoResultado.appendChild(parrafo)
 
-    let BotonFuego = document.getElementById('BotonFuego')
-    let BotonAgua = document.getElementById('BotonAgua')
-    let BotonHierva = document.getElementById('BotonHierva')
-    let BotonMascota = document.getElementById('Boton-Mascota')
+    
 
     BotonMascota.disabled = true
     BotonFuego.disabled = true
@@ -364,7 +328,6 @@ function MensajeResultadoBatalla(ResultadoFinal) {
 let sectionReiniciar = document.getElementById('Reiniciar')
     sectionReiniciar.style.display = 'block'
 }
-
 function ReiniciarJuego() {
     
     location.reload()
