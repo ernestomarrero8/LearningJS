@@ -17,9 +17,9 @@ let InputPydos
 let enemigoAleatorio
 let Attack
 let MonsterAttack
-/* let BotonFuego = document.getElementById('BotonFuego')
-let BotonAgua = document.getElementById('BotonAgua')
-let BotonHierva = document.getElementById('BotonHierva') */
+let Botones =[]
+
+
 
 let BotonFuego 
 let BotonAgua 
@@ -32,9 +32,7 @@ const ContenedorTarjetas = document.getElementById('DivTarjetas')
 const sectionReiniciar = document.getElementById('Reiniciar')
 const parrafo = document.createElement('p')
 const BotonReiniciar = document.getElementById('Boton-Reiniciar')
-/* const BotonFuego = document.getElementById('BotonFuego')
-const BotonAgua = document.getElementById('BotonAgua')
-const BotonHierva = document.getElementById('BotonHierva') */
+
 
 class PoketMonster{
     constructor(nombre, foto, vida){
@@ -161,21 +159,20 @@ function ExtraerAtaques(MascotaJugador) {
 function MostrarAtaques(Attack){
     Attack.forEach((Ataque) => {
         MonsterAttack = `                       
-        <button id=${Ataque.id} class="BotonAtaque">${Ataque.NombreAtaque}</button>
+        <button id=${Ataque.id} class="BotonAtaque BotonDeAtaque">${Ataque.NombreAtaque}</button>
         `
         ContenedorAtaques.innerHTML += MonsterAttack
     })
     BotonFuego = document.getElementById('Boton-Fuego')
     BotonAgua = document.getElementById('Boton-Agua')
     BotonHierva = document.getElementById('Boton-Hierva')
+    Botones = document.querySelectorAll('')
 
     BotonFuego.addEventListener('click',AtaqueFuego)
     BotonAgua.addEventListener('click',AtaqueAgua)
     BotonHierva.addEventListener('click',AtaqueHierva)
 
-    /* BotonFuego = document.getElementById('BotonFuego')
-    BotonAgua = document.getElementById('BotonAgua')
-    BotonHierva = document.getElementById('BotonHierva') */
+   
 }
 function SeleccionarMascotaEnemiga() {  
     enemigoAleatorio = aleatorio(0,ArrayMonsters.length -1)
