@@ -11,6 +11,7 @@ let InputMonank
 let InputPydos
 let AtaqueJugador
 let enemigo
+let jugador
 let IdAtaqueJugador
 let IdAtaqueEnemigo
 let ResultadoBatalla
@@ -21,8 +22,10 @@ let MonsterAttack
 let BotonFuego 
 let BotonAgua 
 let BotonHierva
-let VidasJugador = 3
-let VidasEnemigo = 3
+let IndexAtaqueJugador =[]
+let IndexAtaqueEnemigo
+let VictoriasJugador = 0
+let VictoriasEnemigo = 0
 
 const ContenedorAtaques = document.getElementById('ContenedorAtaques')
 const BotonMascota = document.getElementById('Boton-Mascota')
@@ -34,8 +37,8 @@ const BotonReiniciar = document.getElementById('Boton-Reiniciar')
 const DivAtaqueDelJugador = document.getElementById('AtaqueDelJugador')
 const DivAtaqueDelEnemigo = document.getElementById('AtaqueDelEnemigo')
 const ParrafoResultado = document.getElementById('Resultado')
-const SpanVidasJugador = document.getElementById('VidasJugador')
-const SpanVidasEnemigo = document.getElementById('VidasEnemigo')
+const SpanVictoriasJugador = document.getElementById('VictoriasJugador')
+const SpanVictoriasEnemigo = document.getElementById('VictoriasEnemigo')
 
 
 class PoketMonster{
@@ -179,15 +182,15 @@ function SecuenciaAtaque() {
         boton.addEventListener('click',(e)=> {
             console.log(e)
             if(e.target.innerText==='Llamarada 🔥'){
-             arrayAtaqueJugador.push('Tu macota utilizo Llamarada 🔥')
+             arrayAtaqueJugador.push('Llamarada 🔥')
             console.log(arrayAtaqueJugador)
             boton.style.background = '#f112'            
             } else if (e.target.innerText==='Lluvia congelada🌧️') {
-                arrayAtaqueJugador.push('Tu macota utilizo Lluvia congelada🌧️')
+                arrayAtaqueJugador.push('Lluvia congelada🌧️')
                 console.log(arrayAtaqueJugador)
                 boton.style.background = '#f112'
             } else {
-                arrayAtaqueJugador.push('Tu macota utilizo Hojas Cortantes🍃')
+                arrayAtaqueJugador.push('Hojas Cortantes🍃')
                 console.log(arrayAtaqueJugador)
                 boton.style.background = '#f112'
             }
@@ -226,68 +229,75 @@ function IniciarPelea() {
     }
 }
 
-function Combate() {
+function IndexAmbosOponentes(jugador,enemigo) {
+    IndexAtaqueJugador = arrayAtaqueJugador.NombreAtaque[jugador]
+    IndexAtaqueEnemigo = AtaquesMonstruoEnemigo.ataques[enemigo]
+    
+}
 
-    if (ArrayMonsters.NombreAtaque == AtaquesMonstruoEnemigo.ataques ) {
-        CrearMensaje ('Empate🔥🌧️🍃')
-    }else if (ArrayMonsters.NombreAtaque == 'Llamarada 🔥' && AtaquesMonstruoEnemigo.ataques == 'Hojas Cortantes🍃') {
-        ResultadoBatalla = 'Ganaste 🏆✌🏽'
-        vidasEnemigo --
-        spanVidasEnemigo.innerHTML = vidasEnemigo
-    }else if (ArrayMonsters.NombreAtaque == 'Hojas Cortantes🍃' && AtaquesMonstruoEnemigo.ataques == 'Lluvia congelada🌧️') {
-        ResultadoBatalla = 'Ganaste 🏆✌🏽'
-        vidasEnemigo --
-        spanVidasEnemigo.innerHTML = vidasEnemigo
-    }else if (ArrayMonsters.NombreAtaque == 'Lluvia congelada🌧️' && AtaquesMonstruoEnemigo.ataques == 'Llamarada 🔥') {
-        ResultadoBatalla = 'Ganaste 🏆✌🏽'
-        vidasEnemigo --
-        spanVidasEnemigo.innerHTML = vidasEnemigo
-    }else if (AtaquesMonstruoEnemigo.ataques == 'Llamarada 🔥' && ArrayMonsters.NombreAtaque == 'Hojas Cortantes🍃') {
-        ResultadoBatalla = 'Perdiste 😣👾'
-        /* VidasJugador
-        VidasEnemigo=VidasEnemigo-1 */
-    }else if (AtaquesMonstruoEnemigo.ataques == 'Hojas Cortantes🍃' && ArrayMonsters.NombreAtaque == 'Lluvia congelada🌧️') {
-        ResultadoBatalla = 'Perdiste 😣👾'
-        /* VidasJugador
-        VidasEnemigo=VidasEnemigo-1 */
-    }else if (AtaquesMonstruoEnemigo.ataques == 'Lluvia congelada🌧️' && ArrayMonsters.NombreAtaque == 'Llamarada 🔥') {
-        ResultadoBatalla = 'Perdiste 😣👾'
-        /* VidasJugador
-        VidasEnemigo=VidasEnemigo-1 */
-    }
+function Combate() {
 
     for (let index = 0; index < arrayAtaqueJugador.length; index++) {
         if (arrayAtaqueJugador[index]=== AtaquesMonstruoEnemigo[index]) {
-            CrearMensaje('Empate🔥')
+            IndexAmbosOponentes(index,index)
+            CrearMensaje('Empate🔥🌧️🍃')
+            VictoriasJugador++
+            SpanVictoriasJugador.innerHTML=VictoriasJugador
+        }else if (arrayAtaqueJugador[index] == 'Llamarada 🔥' && AtaquesMonstruoEnemigo[index] == 'Hojas Cortantes🍃') {
+            IndexAmbosOponentes(index,index)
+            CrearMensaje = ('Ganaste 🏆✌🏽')
+            VictoriasJugador++
+            SpanVictoriasJugador.innerHTML=VictoriasJugador
+            SpanMascotaEnemigo.innerHTML = VictoriasEnemigo
+        }else if (ArrayMonsters.NombreAtaque == 'Hojas Cortantes🍃' && AtaquesMonstruoEnemigo.ataques == 'Lluvia congelada🌧️') {
+            IndexAmbosOponentes(index,index)
+            CrearMensaje = ('Ganaste 🏆✌🏽')
+            VictoriasJugador++
+            SpanVictoriasJugador.innerHTML=VictoriasJugador
+        }else if (ArrayMonsters.NombreAtaque == 'Lluvia congelada🌧️' && AtaquesMonstruoEnemigo.ataques == 'Llamarada 🔥') {
+            IndexAmbosOponentes(index,index)
+            CrearMensaje = ('Ganaste 🏆✌🏽')
+            VictoriasJugador++
+            SpanVictoriasJugador.innerHTML=VictoriasJugador
+            
+        }else {
+            IndexAmbosOponentes(index,index)
+            CrearMensaje('Perdiste 😣👾')
+            VictoriasEnemigo++
+            SpanMascotaEnemigo.innerHTML= VictoriasEnemigo
         }
-        
     }
-    RevisarVidas()
+    
+    RevisarVictorias()
 }
     
 function CrearMensaje(ResultadoBatalla) {   
-    SpanVidasJugador.innerHTML=VidasJugador
-    SpanVidasEnemigo.innerHTML=VidasEnemigo
+    SpanVictoriasJugador.innerHTML=VictoriasJugador
+    SpanVictoriasEnemigo.innerHTML=VictoriasEnemigo
     
     let NuevoAtaqueDelJugador = document.createElement('p')
     let NuevoAtaqueDelEnemigo = document.createElement('p')
 
     ParrafoResultado.innerHTML = ResultadoBatalla
-    NuevoAtaqueDelJugador.innerHTML = AtaqueJugador
-    NuevoAtaqueDelEnemigo.innerHTML = enemigo
+    NuevoAtaqueDelJugador.innerHTML = IndexAtaqueJugador
+    NuevoAtaqueDelEnemigo.innerHTML = IndexAtaqueEnemigo
 
     DivAtaqueDelJugador.appendChild(NuevoAtaqueDelJugador)
     DivAtaqueDelEnemigo.appendChild(NuevoAtaqueDelEnemigo)
 }
 
-function RevisarVidas() {
+function RevisarVictorias() {
 
-    if (VidasEnemigo == 0) {
+    if (VictoriasJugador == VictoriasEnemigo) {
 
-        MensajeResultadoBatalla('Ganaste el juego! 🏆👾')
+        CrearMensaje ('Esto fue un empate ✌🏽')
+
         
-    }else if (VidasJugador == 0) {
-        MensajeResultadoBatalla('Perdiste el juego 😣👾')
+    }else if (VictoriasJugador >VictoriasEnemigo) {
+        CrearMensaje('Ganaste el juego! 🏆👾')
+        
+    }else{
+        CrearMensaje('Perdiste el juego 😣👾')
     }
     
 }
